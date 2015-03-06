@@ -18,6 +18,6 @@ References: this tool was developed as part of the analysis for
     chrLen=100000000
     minLen=0.5
 
-    cat $OUT/${OUT}_1_true_trees.trees | awk '$1=="tree"' | tr '_' ' ' | awk '{printf $7"\t"; for (i=10;i<=NF;i++) printf $i; print ""}' | gzip --best -c -v - > $OUT/$OUT.trees.gz
+    cat $OUT/${OUT}_1_true_trees.trees | awk '$1=="tree"' | tr '_' ' ' | awk '{printf $7"\t"; for (i=10;i<=NF;i++) printf $i; print ""}' | gzip -c -v - > $OUT/$OUT.trees.gz
     nTrees=`gunzip -c $OUT/$OUT.trees.gz | wc -l`
-    gunzip -c $OUT/$OUT.trees.gz | java -jar ParseTreesOutputIBD_FastSimCoal.jar $recRate $chrLen $minLen $nTrees | gzip --best -c -v - > $OUT/$OUT.match.gz
+    gunzip -c $OUT/$OUT.trees.gz | java -jar ParseTreesOutputIBD_FastSimCoal.jar $recRate $chrLen $minLen $nTrees | gzip -c -v - > $OUT/$OUT.match.gz
